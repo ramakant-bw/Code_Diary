@@ -1,0 +1,101 @@
+TrackID,Name,AlbumID,Composer,Minutes,UnitPrice
+1,Stay,11,Bruno Mars,00:04:01,1
+2,Happier,23,Billie Eilish,00:02:59,2
+3,Rolling in the Deep,15,Adele,00:04:03,1
+4,Taki Taki,42,Dua Lipa,00:03:12,1
+5,Don't Start Now,28,Rihanna,00:03:42,2
+6,Shivers,3,Ed Sheeran,00:03:35,1
+7,Mockingbird,7,Eminem,00:03:50,2
+8,Blinding Lights,5,The Weeknd,00:03:19,1
+9,Senorita,29,Shawn Mendes,00:03:18,2
+10,Watermelon Sugar,53,Harry Styles,00:02:51,2
+11,Unstoppable,4,Sia,00:03:34,1
+12,Shape of You,3,Ed Sheeran,00:03:48,2
+13,Hello,15,Adele,00:04:21,1
+14,Levitating,28,Dua Lipa,00:03:01,2
+15,Heat Waves,18,Imagine Dragons,00:04:08,1
+16,Bones,18,Imagine Dragons,00:03:03,2
+17,Photograph,3,Ed Sheeran,00:04:13,1
+18,Closer,38,The Chainsmokers,00:04:05,2
+19,Circles,26,Post Malone,00:03:44,2
+20,DNA,11,BTS,00:03:30,1
+21,Lost Stars,12,Adam Levine,00:03:45,1
+22,Midnight City,18,M83,00:04:02,2
+23,Ride It,27,Jay Sean,00:03:12,2
+24,Peaches,10,Justin Bieber,00:03:18,2
+25,Uptown Funk,38,Bruno Mars,00:04:25,1
+26,Stay,8,Justin Bieber,00:02:52,2
+27,Dusk Till Dawn,13,ZAYN,00:03:58,1
+28,On The Floor,86,Jennifer Lopez,00:03:36,1
+29,Easy On Me,15,Adele,00:03:44,2
+30,No Tears Left to Cry,6,Ariana Grande,00:03:30,2
+31,Despacito,17,Luis Fonsi,00:03:51,1
+32,Poker Face,40,Lady Gaga,00:03:58,2
+33,God's Plan,8,Drake,00:03:22,2
+34,7 Rings,6,Ariana Grande,00:02:58,1
+35,Counting Stars,16,OneRepublic,00:04:17,1
+36,Roar,44,Katy Perry,00:03:45,2
+37,Hello,15,Adele,00:04:09,2
+38,Halo,37,Beyoncé,00:03:50,1
+39,Photograph,3,Ed Sheeran,00:04:13,2
+40,Peaches,10,Justin Bieber,00:03:11,1
+41,Senorita,29,Shawn Mendes,00:03:16,2
+42,Mockingbird,7,Eminem,00:03:49,1
+43,Blinding Lights,5,The Weeknd,00:03:33,2
+44,Shape of You,3,Ed Sheeran,00:03:45,2
+45,Taki Taki,42,Dua Lipa,00:03:31,1
+46,Chandelier,4,Sia,00:03:58,1
+47,Rolling in the Deep,15,Adele,00:04:02,2
+48,Midnight City,18,M83,00:03:51,2
+49,Lost Stars,12,Adam Levine,00:03:53,1
+50,Heat Waves,18,Imagine Dragons,00:03:45,1
+51,Happier,23,Billie Eilish,00:03:06,2
+52,DNA,11,BTS,00:03:40,2
+53,Circles,26,Post Malone,00:03:27,1
+54,Bones,18,Imagine Dragons,00:03:22,1
+55,Levitating,28,Dua Lipa,00:03:18,2
+56,Don't Start Now,28,Dua Lipa,00:03:11,2
+57,Shivers,3,Ed Sheeran,00:03:25,1
+58,Watermelon Sugar,53,Harry Styles,00:02:57,1
+59,Hello,15,Adele,00:04:10,2
+60,Unstoppable,4,Sia,00:03:34,2
+61,Senorita,29,Shawn Mendes,00:03:06,2
+62,Stay,11,Bruno Mars,00:03:54,1
+63,Stay,8,Justin Bieber,00:03:03,2
+64,Mockingbird,7,Eminem,00:04:04,2
+65,Photograph,3,Ed Sheeran,00:04:01,1
+66,Closer,38,The Chainsmokers,00:04:03,1
+67,Shape of You,3,Ed Sheeran,00:03:29,2
+68,Hello,15,Adele,00:04:31,2
+69,Heat Waves,18,Imagine Dragons,00:03:53,1
+70,Bones,18,Imagine Dragons,00:03:36,2
+71,Dusk Till Dawn,13,ZAYN,00:03:56,2
+72,Blinding Lights,5,The Weeknd,00:03:21,1
+73,Happier,23,Billie Eilish,00:03:02,2
+74,Peaches,10,Justin Bieber,00:03:23,1
+75,Levitating,28,Dua Lipa,00:03:25,1
+76,Rolling in the Deep,15,Adele,00:04:04,1
+77,Taki Taki,42,Dua Lipa,00:03:14,1
+78,Shivers,3,Ed Sheeran,00:03:32,2
+79,Senorita,29,Shawn Mendes,00:03:13,1
+80,Midnight City,18,M83,00:04:01,2
+81,Circles,26,Post Malone,00:03:47,2
+82,Mockingbird,7,Eminem,00:04:03,1
+83,Closer,38,The Chainsmokers,00:03:49,1
+84,On The Floor,86,Jennifer Lopez,00:03:41,2
+85,Don't Start Now,28,Dua Lipa,00:03:07,2
+86,No Tears Left to Cry,6,Ariana Grande,00:03:24,2
+87,Stay,8,Justin Bieber,00:03:00,1
+88,DNA,11,BTS,00:03:26,1
+89,God's Plan,8,Drake,00:03:12,2
+90,Lost Stars,12,Adam Levine,00:03:50,2
+91,Rolling in the Deep,15,Adele,00:04:13,1
+92,Bones,18,Imagine Dragons,00:03:01,1
+93,Watermelon Sugar,53,Harry Styles,00:02:59,2
+94,Photograph,3,Ed Sheeran,00:03:53,1
+95,Peaches,10,Justin Bieber,00:03:10,2
+96,Midnight City,18,M83,00:04:11,1
+97,Stay,11,Bruno Mars,00:03:41,2
+98,Senorita,29,Shawn Mendes,00:03:09,2
+99,Happier,23,Billie Eilish,00:03:20,1
+100,Levitating,28,Dua Lipa,00:03:16,2
