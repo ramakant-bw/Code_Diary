@@ -79,7 +79,64 @@ on A.AlbumID = T.AlbumID Group by A.Title having Count(T.TrackID) >= 5 Order By 
 
 
 -------------------------------------------------------------------------
+-- Chinook Database is installed for practice
+
+-- Dew to old tables we had created using csv their are complecations are arise we need to solve that first
+
+-------------------------------------------------------------------------
+-- Dropping Older Artists, Albums, Track Table of old data as we installed chinnok db 
+
+drop table tracks;
+drop table albums;
+drop table artists;
+------------------------------
+-- Giving origional name to chinnok databse tables as old table are deleted
+
+alter table artist rename to artists;
+alter table track rename to tracks;
+alter table album rename to albums;
+
+---------------------------------
+-- Now Changing column name to origenal one as chinnok db has 
+alter table artists rename artist_id to artistId;
+alter table albums rename artist_id to artistId;
+alter table albums rename album_id to albumId;
+alter table tracks rename album_id to albumId;
+alter table tracks rename unit_price to unitPrice;
 
 -------------------------------------------------------------------------
 
--------------------------------------------------------------------------
+-- Practice Questions
+
+-- 1. How many albums does the artist Led Zeppelin have? 
+
+select AR.Name, Count(AL.Title) as NumberOfTitles from artist as AR inner join album as AL On 
+AR.artist_Id = AL.artist_Id group by AR.Name having AR.Name = 'Led Zeppelin';
+Ans - "Led Zeppelin"	14
+
+--------------------------------------------------------------------------
+-- 2. Create a list of album titles and the unit prices for the artist "Audioslave".
+-- How many records are returned?
+
+select ar.name, al.title, tr.Unit_Price from artist as ar 
+inner join album as al on ar.artist_id = al.artist_id
+inner join track as tr on al.album_id = tr.album_id
+where ar.name = 'Audioslave';
+
+-- Ans - Total rows: 40
+
+----------------------------------------------------------------------------
+--3. Find the first and last name of any customer who does not have an invoice. Are there any customers returned from the query?  
+
+select * from customer
+
+select c.first_Name, c.last_Name from customer as c left join invoice as i 
+on c.customer_Id = i.customer_Id where i.invoice_Id is null
+
+-- Ans- No
+
+-----------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------
