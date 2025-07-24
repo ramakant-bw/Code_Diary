@@ -170,3 +170,10 @@ Create View frequent_buyer As
 	 having count(t.track_id) > 1;
 
 Select * From frequent_buyer;
+
+------------------------------------------------------------------------------
+-- Changing column name
+
+alter table frequent_buyer rename total_track to total_song;
+
+Select * From frequent_buyer;
