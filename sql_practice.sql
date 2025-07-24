@@ -136,7 +136,26 @@ on c.customer_Id = i.customer_Id where i.invoice_Id is null
 -- Ans- No
 
 -----------------------------------------------------------------------------
+--4. Creating View using Subquery to Find Invoices for Customers in Paris
 
 
+Create View Paris_invoice As	
+	SELECT *
+	FROM invoice
+	WHERE customer_id IN (SELECT customer_id FROM customer WHERE city = 'Paris');
+
+Select * From Paris_invoice;
+
+------------------------------------------------------------------------------
+
+--5. Creating View For Top 10 Track Sold Most Using - 'Join with Group By And Order By'
+
+Create View Top_10 As 
+	Select t.name as Track_name,  count(i.invoice_line_id) as Times_sold from track as t 
+	inner join invoice_line as i on t.track_id = i.track_id
+	Group By t.name 
+	Order BY Times_sold Desc Limit 10;
+
+Select * From Top_10
 
 ------------------------------------------------------------------------------
