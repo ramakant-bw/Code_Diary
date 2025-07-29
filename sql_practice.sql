@@ -225,5 +225,8 @@ select * from Spotify_hits where released_date between '2011-01-01' and '2023-01
 
 select track_name, streams from Spotify_hits order by streams desc limit 10;
 
+-- 3. Find vampire artist name
+
+select artist_name from Spotify_hits where track_name = 'vampire'
 
 ------------------------------------------------------------------------------
