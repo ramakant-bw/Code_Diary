@@ -217,5 +217,13 @@ Copy Spotify_hits From 'D:\DA20\Git_hub\Diary-SQL\spotify-2023.csv' Delimiter ',
 
 Select * from Spotify_hits ;
 
+-- 1. Select Released Tracks which is between '2011-01-01' and '2023-01-01'
+
+select * from Spotify_hits where released_date between '2011-01-01' and '2023-01-01';
+
+-- 2 Which is 10 most streamed tracks are ?
+
+select track_name, streams from Spotify_hits order by streams desc limit 10;
+
 
 ------------------------------------------------------------------------------
