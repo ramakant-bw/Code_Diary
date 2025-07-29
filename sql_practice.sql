@@ -177,3 +177,45 @@ Select * From frequent_buyer;
 alter table frequent_buyer rename total_track to total_song;
 
 Select * From frequent_buyer;
+
+
+
+------------------------------------------------------------------------------
+
+-- 29-07-2025 practice
+
+
+--Creating new Table for practice
+
+--Creating table of kaggle top spotify tracks of 2023 dataset 
+
+-- Creating table and headers of table
+
+Create table Spotify_hits (
+track_id int Primary Key,
+track_name varchar,
+artist_name varchar,
+artist_count int,
+released_date date,
+in_spotify_playlists varchar,
+in_spotify_charts varchar,
+streams varchar,
+in_apple_playlists varchar,
+in_apple_charts varchar,
+delete_column varchar
+);
+
+Select * from Spotify_hits;
+
+-- Removing extra column
+
+alter table Spotify_hits Drop delete_column;
+
+-- Importing data from csv
+
+Copy Spotify_hits From 'D:\DA20\Git_hub\Diary-SQL\spotify-2023.csv' Delimiter ',' CSV Header;
+
+Select * from Spotify_hits ;
+
+
+------------------------------------------------------------------------------
