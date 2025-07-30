@@ -246,3 +246,16 @@ select track_name, released_date from Spotify_hits where released_date >= Date '
 
 
 ------------------------------------------------------------------------------
+
+--Question on Employee-Customer-Invoice tables
+
+--1. Create a new customer invoice id by combining a customer’s invoice id with their first and last name while ordering 
+--your query in the following order: firstname, lastname, and invoiceID.
+
+select (c.First_Name||c.Last_Name||i.invoice_Id) as Invoice_ID from customer as c
+	inner join invoice as i on c.Customer_Id = i.Customer_Id order by Invoice_ID
+
+
+
+
+	
