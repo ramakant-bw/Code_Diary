@@ -256,6 +256,7 @@ select (c.First_Name||c.Last_Name||i.invoice_Id) as Invoice_ID from customer as 
 	inner join invoice as i on c.Customer_Id = i.Customer_Id order by Invoice_ID
 
 
+--2. Show a list of employees who have worked for the company for 15 or more years using the current date function. Sort by lastname ascending.
 
-
+ select last_name, (current_date - hire_date) from employee order by last_name
 	
