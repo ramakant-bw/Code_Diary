@@ -15,7 +15,6 @@
 	    Value INTEGER
 	);
 
-	
 
 
 -- 2nd Table Honye Production
@@ -92,6 +91,35 @@
 	    Value INTEGER
 	);
 
+--------------------------------------------------------------------
 
+-- Inserting data from datasets 
+
+
+copy cheese_production from 'D:\DA20\Git_hub\Diary-SQL\cheese_production.csv' Delimiter ',' CSV Header;
+
+
+-- Problems
+-- ERROR: value "2460538000" is out of range for type integer
+-- Solution
+-- We need to change int data type with bigint
+
+
+
+alter table cheese_production 
+alter column Value 
+type BIGINT
+
+select * from cheese_production
 	
+copy honey_production
 
+copy milk_production
+
+copy coffee_production
+
+copy egg_production
+
+copy state_lookup
+
+copy yogurt_production
