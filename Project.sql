@@ -121,18 +121,96 @@ rename column value to c_value
 
 -- we need to delete and recreate our tables
 
+Drop Table cheese_production, honey_production, milk_production, coffee_production, egg_production, state_lookup, 
+
+-- Now we create table with changed column name and data type BIGINT
+
+-- 1st Table Cheese Production
+
+	CREATE TABLE cheese_production (
+	    Year INTEGER,
+	    Period TEXT,
+	    Geo_Level TEXT,
+	    State_ANSI INTEGER,
+	    Commodity_ID INTEGER,
+	    Domain TEXT,
+	    Quantity BIGINT
+	);
 
 
-select * from cheese_production
+
+-- 2nd Table Honye Production
+
+	CREATE TABLE honey_production (
+    Year INTEGER,
+    Geo_Level TEXT,
+    State_ANSI INTEGER,
+    Commodity_ID INTEGER,
+    Quantity BIGINT
+	);
+
+
+-- 3rd Table Milk Production
 	
-copy honey_production
+	CREATE TABLE milk_production (
+    Year INTEGER,
+    Period TEXT,
+    Geo_Level TEXT,
+    State_ANSI INTEGER,
+    Commodity_ID INTEGER,
+    Domain TEXT,
+    Quantity BIGINT
+  );
 
-copy milk_production
 
-copy coffee_production
+-- 4rd Table coffee_production
 
-copy egg_production
 
-copy state_lookup
+	CREATE TABLE coffee_production (
+	    Year INTEGER,
+	    Period TEXT,
+	    Geo_Level TEXT,
+	    State_ANSI INTEGER,
+	    Commodity_ID INTEGER,
+	    Quantity BIGINT
+	);
 
-copy yogurt_production
+
+-- 5ft Table egg_production
+
+
+	CREATE TABLE egg_production (
+	    Year INTEGER,
+	    Period TEXT,
+	    Geo_Level TEXT,
+	    State_ANSI INTEGER,
+	    Commodity_ID INTEGER,
+	    Quantity BIGINT
+	);
+
+
+
+-- 6th Table state_lookup
+
+
+	CREATE TABLE state_lookup (
+	    State TEXT,
+	    State_ANSI INTEGER
+	);
+
+
+
+-- 7th Table yogurt_production
+
+
+	CREATE TABLE yogurt_production (
+	    Year INTEGER,
+	    Period TEXT,
+	    Geo_Level TEXT,
+	    State_ANSI INTEGER,
+	    Commodity_ID INTEGER,
+	    Domain TEXT,
+	    Quantity BIGINT
+	);
+
+--------------------------------------------------------------------
