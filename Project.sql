@@ -112,9 +112,14 @@ type BIGINT
 -- ERROR:  column "value" of relation "cheese_production" does not exist 
 -- Due to column name 'value' it create error because it is reserve keyword in sql
 -- Solution 
--- we need to change it first
+-- we need to rename it first
 
+alter table cheese_production 
+rename column value to c_value
 
+-- ERROR:  column "value" does not exist 
+
+-- we need to delete and recreate our tables
 
 
 
