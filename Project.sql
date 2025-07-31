@@ -227,3 +227,12 @@ copy state_lookup from 'D:\DA20\Git_hub\Diary-SQL\state_lookup.csv' Delimiter ',
 copy yogurt_production from 'D:\DA20\Git_hub\Diary-SQL\yogurt_production.csv' Delimiter ',' CSV Header;
 
 select * from cheese_production
+select * from milk_production
+
+
+-- Let Take some question on this data
+-- 1. Find the total milk production for the year 2023.
+   Select * from milk_production
+
+
+-- Same problem arise of reserved keyword with 'year' now we need to reapeat all process 
