@@ -99,16 +99,24 @@
 copy cheese_production from 'D:\DA20\Git_hub\Diary-SQL\cheese_production.csv' Delimiter ',' CSV Header;
 
 
--- Problems
+-- 1. Problem
 -- ERROR: value "2460538000" is out of range for type integer
 -- Solution
 -- We need to change int data type with bigint
 
-
-
 alter table cheese_production 
 alter column Value 
 type BIGINT
+
+-- 2. Problem
+-- ERROR:  column "value" of relation "cheese_production" does not exist 
+-- Due to column name 'value' it create error because it is reserve keyword in sql
+-- Solution 
+-- we need to change it first
+
+
+
+
 
 select * from cheese_production
 	
