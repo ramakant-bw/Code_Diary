@@ -1,4 +1,4 @@
-Year,Period,Geo_Level,State_ANSI,Commodity_ID,Quantity
+Years,Periods,Geo_Level,State_ANSI,Commodity_ID,Quantity
 2016,YEAR,STATE,15,1,5400000
 2015,YEAR,STATE,15,1,6600000
 2014,YEAR,STATE,15,1,7500000

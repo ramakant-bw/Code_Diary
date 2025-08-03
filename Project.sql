@@ -121,7 +121,7 @@ rename column value to c_value
 
 -- we need to delete and recreate our tables
 
-Drop Table cheese_production, honey_production, milk_production, coffee_production, egg_production, state_lookup, 
+Drop Table cheese_production, honey_production, milk_production, coffee_production, egg_production, state_lookup, yogurt_production  
 
 -- Now we create table with changed column name and data type BIGINT
 
@@ -231,8 +231,116 @@ select * from milk_production
 
 
 -- Let Take some question on this data
--- 1. Find the total milk production for the year 2023.
-   Select * from milk_production
+-- 1. Find the total milk production for the year 2023
+select geo_level from cheese_production;
 
 
 -- Same problem arise of reserved keyword with 'year' now we need to reapeat all process 
+
+--Droping tables
+Drop Table cheese_production, honey_production, milk_production, coffee_production, egg_production, state_lookup, yogurt_production  
+
+--Creating table with new name
+
+-- 1st Table Cheese Production
+
+	CREATE TABLE cheese_production (
+	    Years INTEGER,
+	    Periods TEXT,
+	    Geo_Level TEXT,
+	    State_ANSI INTEGER,
+	    Commodity_ID INTEGER,
+	    Domains TEXT,
+	    Quantity BIGINT
+	);
+
+
+
+-- 2nd Table Honye Production
+
+	CREATE TABLE honey_production (
+    Years INTEGER,
+    Geo_Level TEXT,
+    State_ANSI INTEGER,
+    Commodity_ID INTEGER,
+    Quantity BIGINT
+	);
+
+
+-- 3rd Table Milk Production
+	
+	CREATE TABLE milk_production (
+    Years INTEGER,
+    Periods TEXT,
+    Geo_Level TEXT,
+    State_ANSI INTEGER,
+    Commodity_ID INTEGER,
+    Domains TEXT,
+    Quantity BIGINT
+  );
+
+
+-- 4rd Table coffee_production
+
+
+	CREATE TABLE coffee_production (
+	    Years INTEGER,
+	    Periods TEXT,
+	    Geo_Level TEXT,
+	    State_ANSI INTEGER,
+	    Commodity_ID INTEGER,
+	    Quantity BIGINT
+	);
+
+
+-- 5ft Table egg_production
+
+
+	CREATE TABLE egg_production (
+	    Years INTEGER,
+	    Periods TEXT,
+	    Geo_Level TEXT,
+	    State_ANSI INTEGER,
+	    Commodity_ID INTEGER,
+	    Quantity BIGINT
+	);
+
+
+
+-- 6th Table state_lookup
+
+
+	CREATE TABLE state_lookup (
+	    States TEXT,
+	    State_ANSI INTEGER
+	);
+
+
+
+-- 7th Table yogurt_production
+
+
+	CREATE TABLE yogurt_production (
+	    Years INTEGER,
+	    Periods TEXT,
+	    Geo_Level TEXT,
+	    State_ANSI INTEGER,
+	    Commodity_ID INTEGER,
+	    Domains TEXT,
+	    Quantity BIGINT
+	);
+
+--------------------------------------------------------------------
+-- Inserting data from CSV file
+
+copy cheese_production from 'D:\DA20\Git_hub\Diary-SQL\cheese_production.csv' Delimiter ',' CSV Header;
+copy coffee_production from 'D:\DA20\Git_hub\Diary-SQL\coffee_production.csv' Delimiter ',' CSV Header;
+copy egg_production from 'D:\DA20\Git_hub\Diary-SQL\egg_production.csv' Delimiter ',' CSV Header;
+copy honey_production from 'D:\DA20\Git_hub\Diary-SQL\honey_production.csv' Delimiter ',' CSV Header;
+copy milk_production from 'D:\DA20\Git_hub\Diary-SQL\milk_production.csv' Delimiter ',' CSV Header;
+copy state_lookup from 'D:\DA20\Git_hub\Diary-SQL\state_lookup.csv' Delimiter ',' CSV Header;
+copy yogurt_production from 'D:\DA20\Git_hub\Diary-SQL\yogurt_production.csv' Delimiter ',' CSV Header;
+
+select Periods from cheese_production;
+
+select * from milk_production

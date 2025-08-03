@@ -1,4 +1,4 @@
-Year,Period,Geo_Level,State_ANSI,Commodity_ID,Domain,Quantity
+Years,Periods,Geo_Level,State_ANSI,Commodity_ID,Domains,Quantity
 2023,APR,STATE,4,5,TOTAL,428000000
 2023,APR,STATE,6,5,TOTAL,3543000000
 2023,APR,STATE,8,5,TOTAL,444000000

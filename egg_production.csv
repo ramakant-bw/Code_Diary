@@ -1,4 +1,4 @@
-Year,Period,Geo_Level,State_ANSI,Commodity_ID,Quantity
+Years,Periods,Geo_Level,State_ANSI,Commodity_ID,Quantity
 2023,APR,STATE,1,7,224100000
 2023,APR,STATE,5,7,319000000
 2023,APR,STATE,6,7,271300000

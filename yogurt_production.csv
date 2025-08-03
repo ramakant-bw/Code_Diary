@@ -1,4 +1,4 @@
-Year,Period,Geo_Level,State_ANSI,Commodity_ID,Domain,Quantity
+Years,Periods,Geo_Level,State_ANSI,Commodity_ID,Domains,Quantity
 2022,YEAR,STATE,6,4,TOTAL,377839000
 2022,YEAR,STATE,36,4,TOTAL,793256000
 2021,YEAR,STATE,6,4,TOTAL,374637000
