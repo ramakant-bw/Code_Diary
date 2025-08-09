@@ -411,8 +411,35 @@ select Periods from cheese_production;
 
 ------------------------------------------------------------------------
 select * from milk_production;
+select * from honey_production;
+select * from state_lookup;
 
 
+select * from coffee_production;
 
 
+-- Let's take some quetions 
 
+-- 1.Find the total milk production for the year 2023.
+	select years, sum(quantity) as total_production from milk_production group by years having years = 2023;
+
+
+--2. Show coffee production data for the year 2015. What is the total value?
+	select years, sum(quantity) as total_production from coffee_production group by years having years = 2015;
+
+--3. Find the average honey production for the year 2022.
+	select years, avg(quantity) as avg_honey_production from honey_production group by years having years = 2022;
+
+--4. Get the state names with their corresponding ANSI codes from the state_lookup table.What number is Iowa?
+	select * from state_lookup where states = 'IOWA'
+
+--5. Find the highest yogurt production value for the year 2022.
+	select years, max(quantity) as highest_yogurt from yogurt_production group by years having years = 2022;
+
+--6. Find states where both honey and milk were produced in 2022. Did State_ANSI "35" produce both honey and milk in 2022?
+	select s.states, m.years, m.state_ansi, sum(m.quantity) as Total_milk_production, sum(h.quantity) as Total_honey_production from milk_production as m inner join honey_production as h on m.state_ansi = h.state_ansi 
+	inner join state_lookup as s on h.state_ansi = s.state_ansi group by m.years, s.states, m.state_ansi having m.years = 2022 and m.state_ansi = 35;
+
+--7. Find the total yogurt production for states that also produced cheese in 2022.
+	SELECT sum(yp.quantity) FROM yogurt_production as yp WHERE yp.Years = 2022 AND yp.state_ansi IN (SELECT DISTINCT cp.state_ansi FROM cheese_production as cp WHERE cp.Years = 2022)
+	
