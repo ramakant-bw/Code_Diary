@@ -442,4 +442,54 @@ select * from coffee_production;
 
 --7. Find the total yogurt production for states that also produced cheese in 2022.
 	SELECT sum(yp.quantity) FROM yogurt_production as yp WHERE yp.Years = 2022 AND yp.state_ansi IN (SELECT DISTINCT cp.state_ansi FROM cheese_production as cp WHERE cp.Years = 2022)
-	
+
+
+--Taking Some more Questios on this database
+
+
+--1. Can you find out the total milk production for 2023? Your manager wants this information for the yearly report.
+--What is the total milk production for 2023?
+select years, sum(quantity) as total_milk_production from milk_production group by years having years = 2023
+--91812000000
+
+--2. Which states had cheese production greater than 100 million in April 2023? The Cheese Department wants to focus their marketing efforts there. 
+--How many states are there?
+select Years, Periods, State_ANSI, quantity from cheese_production where quantity > 100000000 and periods like 'APR' and Years = 2023;
+--2
+
+--3.Your manager wants to know how coffee production has changed over the years. What is the total value of coffee production for 2011?
+select * from coffee_production where years = 2011;
+--7600000
+
+--4. There's a meeting with the Honey Council next week. Find the average honey production for 2022 so you're prepared.
+select years, avg(quantity) from honey_production where years = 2022 group by years;
+--3133275.000000000000
+
+--5. The State Relations team wants a list of all states names with their corresponding ANSI codes. Can you generate that list? What is the State_ANSI code for Florida?
+select * from state_lookup where states = 'FLORIDA';
+--12
+
+--6. For a cross-commodity report, can you list all states with their cheese production values, even if they didn't produce any cheese in April of 2023?What is the total for NEW JERSEY?
+select c.periods, c.years, s.states, sum(c.quantity) as total_production from cheese_production as c inner join state_lookup as s on c.state_ansi = s.state_ansi group by c.years, c.periods, s.states having s.states = 'NEW JERSEY' order by c.years;
+--4889000
+
+--7. Can you find the total yogurt production for states in the year 2022 
+----which also have cheese production data from 2023? 
+----This will help the Dairy Division in their planning.
+  select sum(quantity) from yogurt_production where years = 2022 and state_ansi in (select distinct state_ansi from cheese_production where years = 2023)
+--1171095000
+
+--8. List all states from state_lookup that are missing from milk_production in 2023.
+---How many states are there?
+   select count(state_ansi) from state_lookup where state_ansi not in (select distinct state_ansi from milk_production where years = 2023) 
+--26
+
+--9. List all states with their cheese production values, including states that didn't produce any cheese in April 2023.
+---Did Delaware produce any cheese in April 2023?
+	SELECT c.Years, c.Periods, c.State_ANSI, s.States, c.quantity FROM cheese_production as c INNER JOIN state_lookup as s ON c.State_ANSI  = s.State_ANSI WHERE c.Years = 2023 AND c.Periods LIKE 'APR';
+--No
+
+--10. Find the average coffee production for all years where the honey production exceeded 1 million.
+  select avg(c.quantity) from coffee_production as c where c.Years IN (select h.Years from honey_production as h group by h.Years having sum(h.quantity) > 1000000);
+--6426666.666666666667
+  
