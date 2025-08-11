@@ -1,0 +1,103 @@
+SELECT COMMAND
+
+The SELECT command in PostgreSQL is used to retrieve data from a database. It's one of the most fundamental and frequently used SQL commands.
+________________________________________
+What It Does
+
+The SELECT command retrieves or fetches data from one or more tables in a database. It doesn't modify the data; it only reads it. The result of a SELECT query is a result set, which is a table-like structure containing the requested data.
+________________________________________
+How It Works
+
+When you execute a SELECT command, PostgreSQL processes the query in several steps. First, it identifies the tables you're querying. Then, it filters the rows based on any specified conditions in the WHERE clause. Next, it selects the specific columns you asked for and applies any grouping or ordering instructions. Finally, it returns the resulting data set.
+________________________________________
+Command Structure
+
+The basic structure of a SELECT query is as follows:
+
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+●SELECT column1, column2, ...: This part specifies which columns you want to retrieve. You can list specific column names separated by commas.
+●FROM table_name: This specifies the table from which you want to retrieve the data.
+●WHERE condition: This is an optional clause that filters the rows. Only rows that satisfy the condition will be included in the result set.
+If you want to retrieve all columns from a table, you can use the asterisk (*) as a wildcard:
+
+SELECT *
+FROM table_name;
+
+________________________________________
+Examples
+
+Let's use a simple products table for our examples.
+product_id	product_name	category	price	stock
+1 Laptop	Electronics	1200.00	50
+2 Smartphone	Electronics	800.00	150
+3 T-Shirt	Apparel	25.00	300
+4 Jeans	Apparel	50.00	200
+
+1. Basic SELECT to retrieve all data
+This is the simplest form of a SELECT statement. Let's retrieve all columns and all rows from the products table.
+SELECT *
+FROM products;
+
+●	Explanation: SELECT * tells the database to get all columns. FROM products specifies the table.
+●	Result: The query returns the entire products table.
+
+2. SELECT with a WHERE clause
+
+Now, let's say we only want to see products from the 'Electronics' category.
+
+SELECT product_name, price
+FROM products
+WHERE category = 'Electronics';
+
+●	Explanation:
+○	SELECT product_name, price: We are only interested in these two specific columns.
+○	FROM products: The data is coming from the products table.
+○	WHERE category = 'Electronics': This filters the results to only include rows where the category column's value is 'Electronics'.
+●	Result: A result set containing only the names and prices of the laptop and smartphone.
+________________________________________
+Where We Use SELECT
+
+The SELECT command isn't just for simple data retrieval. It's a foundational part of many other database operations and objects:
+1.	Simple Queries: The most common use, as shown in the examples above.
+2.	Views: A VIEW is a virtual table created by a SELECT query. When you query a view, you are essentially running the underlying SELECT statement. For example:
+
+CREATE VIEW expensive_products AS
+SELECT product_name, price
+FROM products
+WHERE price > 1000;
+
+3.	Subqueries: A SELECT query can be nested inside another query. The inner SELECT statement (the subquery) provides a result set that is used by the outer query.
+
+SELECT product_name
+FROM products
+WHERE price = (SELECT MAX(price) FROM products);
+
+4.	Common Table Expressions (CTEs): A CTE is a temporary named result set defined within a SELECT statement. It's often used to make complex queries more readable.
+
+WITH high_stock_products AS (
+    SELECT product_name, stock
+    FROM products
+    WHERE stock > 100
+)
+SELECT product_name
+FROM high_stock_products;
+
+5.	INSERT statements: You can use a SELECT statement to insert data from one table into another.
+
+INSERT INTO new_table (column1)
+SELECT column1 FROM old_table WHERE condition;
+
+6.	UPDATE statements: A SELECT statement can be used within an UPDATE statement to set column values based on data from other tables.
+
+7.	CREATE TABLE AS: You can create a new table and populate it with the results of a SELECT query.
+SQL
+CREATE TABLE electronics_stock AS
+SELECT product_name, stock
+FROM products
+WHERE category = 'Electronics';
+
+
