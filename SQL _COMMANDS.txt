@@ -99,5 +99,6 @@ CREATE TABLE electronics_stock AS
 SELECT product_name, stock
 FROM products
 WHERE category = 'Electronics';
+------------------------------------------------------------------------------------------------------------------------------
 
 
