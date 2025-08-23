@@ -120,3 +120,93 @@ SELECT MAX(order_total) FROM orders;
 -- 20. MIN: Returns the minimum value in a column.
 -- Example:
 SELECT MIN(order_total) FROM orders;
+
+
+
+-- Trigger Function in PostgreSQL
+CREATE OR REPLACE FUNCTION update_user_last_login()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.last_login = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_update_user_last_login
+BEFORE UPDATE ON users
+FOR EACH ROW
+EXECUTE FUNCTION update_user_last_login();
+
+
+---------------------------------------------------
+Example
+
+-- ============================================
+-- Example 1: Audit salary changes in employees
+-- ============================================
+
+-- Step 1: Create the employees table
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    salary NUMERIC NOT NULL
+);
+
+-- Step 2: Create the audit log table
+CREATE TABLE employee_audit (
+    audit_id SERIAL PRIMARY KEY,
+    employee_id INT,
+    old_salary NUMERIC,
+    new_salary NUMERIC,
+    changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Step 3: Create the trigger function to log salary changes
+CREATE OR REPLACE FUNCTION log_salary_change()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Only log the change if the salary was modified
+    IF NEW.salary <> OLD.salary THEN
+        INSERT INTO employee_audit (employee_id, old_salary, new_salary)
+        VALUES (OLD.id, OLD.salary, NEW.salary);
+    END IF;
+    RETURN NEW; -- Return the updated row
+END;
+$$ LANGUAGE plpgsql;
+
+-- Step 4: Attach the trigger to the employees table
+CREATE TRIGGER trg_log_salary_change
+AFTER UPDATE ON employees
+FOR EACH ROW
+EXECUTE FUNCTION log_salary_change();
+
+-- ============================================
+-- Example 2: Prevent deletion of VIP customers
+-- ============================================
+
+-- Step 1: Create the customers table
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    is_vip BOOLEAN DEFAULT FALSE
+);
+
+-- Step 2: Create the trigger function to block VIP deletion
+CREATE OR REPLACE FUNCTION prevent_vip_deletion()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Raise an error if the customer is marked as VIP
+    IF OLD.is_vip THEN
+        RAISE EXCEPTION 'Cannot delete VIP customer: %', OLD.name;
+    END IF;
+    RETURN OLD; -- Return the row to be deleted (if allowed)
+END;
+$$ LANGUAGE plpgsql;
+
+-- Step 3: Attach the trigger to the customers table
+CREATE TRIGGER trg_prevent_vip_deletion
+BEFORE DELETE ON customers
+FOR EACH ROW
+EXECUTE FUNCTION prevent_vip_deletion();
+
+---------------------------------------------------------------------------------------------------------
