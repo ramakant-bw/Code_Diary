@@ -210,3 +210,65 @@ FOR EACH ROW
 EXECUTE FUNCTION prevent_vip_deletion();
 
 ---------------------------------------------------------------------------------------------------------
+-- 📦 Create a sample table to store product information
+CREATE TABLE products (
+    product_id SERIAL PRIMARY KEY,       -- Unique ID for each product
+    name VARCHAR(100) NOT NULL,          -- Product name
+    price NUMERIC(10, 2) NOT NULL,       -- Product price
+    stock INT DEFAULT 0                  -- Quantity in stock
+);
+
+-- 🛠️ Create a stored procedure to add a new product
+CREATE OR REPLACE PROCEDURE add_product(
+    p_name VARCHAR,
+    p_price NUMERIC,
+    p_stock INT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO products (name, price, stock)
+    VALUES (p_name, p_price, p_stock);
+END;
+$$;
+
+-- 🛠️ Create a stored procedure to update stock for a product
+CREATE OR REPLACE PROCEDURE update_stock(
+    p_product_id INT,
+    p_new_stock INT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    UPDATE products
+    SET stock = p_new_stock
+    WHERE product_id = p_product_id;
+END;
+$$;
+
+-- 🛠️ Create a stored procedure to delete a product by ID
+CREATE OR REPLACE PROCEDURE delete_product(
+    p_product_id INT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    DELETE FROM products
+    WHERE product_id = p_product_id;
+END;
+$$;
+
+-- 🧪 Call the procedures to test them
+-- Add a new product
+CALL add_product('Laptop', 85000.00, 10);
+
+-- Update stock
+CALL update_stock(1, 15);
+
+-- Delete a product
+CALL delete_product(1);
+
+-- 🔍 View remaining products
+SELECT * FROM products;
+
+-----------------------------------------------------------------------------------------------------------------------
