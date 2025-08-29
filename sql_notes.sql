@@ -318,3 +318,69 @@ ORDER BY
     avg_salary DESC
 LIMIT 3;
 -------------------------------------------------------------------------------------------------------------------------------
+
+--In PostgreSQL, you can use IF...ELSE logic in two main contexts:
+
+--Example 1: IF...ELSE inside a DO block (PL/pgSQL)
+
+-- This is used for procedural logic, not in plain SQL queries.
+
+-- This block checks a value and prints a message based on a condition
+DO $$
+DECLARE
+    salary NUMERIC := 75000;  -- Declare a sample salary variable
+BEGIN
+    IF salary > 90000 THEN
+        RAISE NOTICE 'High salary';
+    ELSIF salary > 70000 THEN
+        RAISE NOTICE 'Good salary';
+    ELSE
+        RAISE NOTICE 'Average or low salary';
+    END IF;
+END $$;
+
+
+
+-- Explanation:
+
+-- DO $$ ... $$; runs an anonymous code block.
+
+-- DECLARE defines variables.
+
+-- IF...ELSIF...ELSE handles branching logic.
+
+-- RAISE NOTICE outputs a message to the console/log.
+
+
+-- Example 2: Inline IF using CASE in a SELECT query
+
+-- This is what you use when writing normal SQL.
+
+-- Adds a column to categorize employees based on salary
+SELECT
+    name,
+    salary,
+    CASE
+        WHEN salary > 90000 THEN 'High'
+        WHEN salary > 70000 THEN 'Medium'
+        ELSE 'Low'
+    END AS salary_category
+FROM
+    employees;
+
+
+-- Explanation:
+
+-- CASE works like IF...ELSE but within a SELECT query.
+
+-- You evaluate multiple conditions and return a value based on the first match.
+
+-- The result is shown as a new column (salary_category here).
+
+-- 💡 Use Which One?
+-- Use case	Syntax to Use
+-- In functions/procedural logic	IF...ELSE in PL/pgSQL
+-- Inside SQL queries	CASE expression
+
+
+------------------------------------------------------------------------------------------------------------------------------------
