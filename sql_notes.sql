@@ -272,3 +272,49 @@ CALL delete_product(1);
 SELECT * FROM products;
 
 -----------------------------------------------------------------------------------------------------------------------
+--SQL CTE Example
+
+-- Step 1: Create the 'employees' table
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    department TEXT NOT NULL,
+    salary NUMERIC NOT NULL
+);
+
+-- Step 2: Insert sample data into 'employees'
+INSERT INTO employees (name, department, salary) VALUES
+('Alice', 'Engineering', 80000),
+('Bob', 'Engineering', 85000),
+('Carol', 'HR', 60000),
+('Dave', 'HR', 62000),
+('Eve', 'Marketing', 70000),
+('Frank', 'Marketing', 72000),
+('Grace', 'Engineering', 90000),
+('Heidi', 'Sales', 75000),
+('Ivan', 'Sales', 77000),
+('Judy', 'Finance', 95000),
+('Mallory', 'Finance', 97000);
+
+-- Step 3: Use a CTE to compute average salary per department and get top 3 departments
+WITH dept_avg_salary AS (
+    -- Calculate average salary for each department
+    SELECT
+        department,
+        AVG(salary) AS avg_salary
+    FROM
+        employees
+    GROUP BY
+        department
+)
+
+-- Select top 3 departments with highest average salary
+SELECT
+    department,
+    avg_salary
+FROM
+    dept_avg_salary
+ORDER BY
+    avg_salary DESC
+LIMIT 3;
+-------------------------------------------------------------------------------------------------------------------------------
