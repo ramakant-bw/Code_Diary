@@ -341,7 +341,7 @@ END $$;
 
 
 
--- Explanation:
+-- Explanation: IF ... ELSIF ... ELSE is used for conditional logic.
 
 -- DO $$ ... $$; runs an anonymous code block.
 
