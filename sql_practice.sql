@@ -161,7 +161,7 @@ Select * From Top_10
 ------------------------------------------------------------------------------
 
 
--- 6. Creating View For Customer Who Buy More Then 1 Tracks Using - 'Join with Group By and Having'
+-- 6. Creating View For Customer Who Buy More Then 1 Tracks Using - 'Join with Group By and Having' Having comes after where if where is present and having applied after group by statement 
 
 Create View frequent_buyer As
 	 select c.First_name as customer_name, count(t.track_id) as Total_track
