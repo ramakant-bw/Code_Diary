@@ -289,6 +289,10 @@ select first_name, salary from employee as em, max_salary as ms where em.salary 
 --2nd Highest with 'order by' , 'limit' and 'offset'
 select  first_name, salary from employee order by salary desc limit 1 offset 1;
 
+--2nd Highest with subquery
+select first_name, salary from employee where salary < (select max(salary) from employee) order by salary desc limit 1
+
+
 
 ----------------------------------------------------------------------------
 	
