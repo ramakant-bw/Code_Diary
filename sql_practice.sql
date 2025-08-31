@@ -258,5 +258,37 @@ select (c.First_Name||c.Last_Name||i.invoice_Id) as Invoice_ID from customer as 
 
 --2. Show a list of employees who have worked for the company for 15 or more years using the current date function. Sort by lastname ascending.
 
- select last_name, (current_date - hire_date) from employee order by last_name
+ select last_name, (current_date - hire_date) from employee order by 
+
+ --------------------------------------------------------------------------------
+
+ select * from employee;
+
+select first_name, salary from employee group by first_name, salary having salary = max(salary)
+
+select * , sum(salary) over(partition by position) from employee
+
+---------------------------------------------------------------------------------------
+-- Row Number in windows function
+
+select *, row_number() over() from employee;
+
+select * , Row_number() over(partition by position) from employee;
+
+--------------------------------------------------------------------------
+
+--2nd Highest with 'with' clause
+
+
+with max_salary (max_sal) as (
+	select max(salary) from employee;
+)
+select first_name, salary from employee as em, max_salary as ms where em.salary < ms.max_sal order by salary desc;
+
+
+--2nd Highest with 'order by' , 'limit' and 'offset'
+select  first_name, salary from employee order by salary desc limit 1 offset 1;
+
+
+----------------------------------------------------------------------------
 	
