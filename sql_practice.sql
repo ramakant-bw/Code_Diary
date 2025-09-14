@@ -295,11 +295,20 @@ select first_name, salary from employee where salary < (select max(salary) from 
 --2nd highest by view
  create view max_sal as select max(salary) from employee;
 
- select first_name, salary from employee ,max_sal as mx where salary < mx.max order by salary desc limit 1
+ select first_name, salary from employee ,max_sal as mx where salary < mx.max_sal order by salary desc limit 1;
 
 
 
+------------------------------------------------------------------------------
 
 
-----------------------------------------------------------------------------
-	
+
+-- Using Chinook Database
+-- 1. Find the total number of invoices per customer and sort the results by the total number of invoices in descending order.	
+select c.first_name, c.last_name, count(i.invoice_id) as total_invoices from customer as c
+inner join invoice as i on c.customer_id = i.customer_id
+group by c.first_name, c.last_name
+order by total_invoices desc;		
+
+
+----------------------------------------------------------------------------------
