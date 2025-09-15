@@ -302,7 +302,6 @@ select first_name, salary from employee where salary < (select max(salary) from 
 ------------------------------------------------------------------------------
 
 
-
 -- Using Chinook Database
 -- 1. Find the total number of invoices per customer and sort the results by the total number of invoices in descending order.	
 select c.first_name, c.last_name, count(i.invoice_id) as total_invoices from customer as c
@@ -310,5 +309,26 @@ inner join invoice as i on c.customer_id = i.customer_id
 group by c.first_name, c.last_name
 order by total_invoices desc;		
 
+----------------------------------------------------------------------------------
 
+-- 2. Find the total number of invoices per customer and sort the results by the total number of invoices in descending order.
+select c.first_name, c.last_name, sum(i.total) as total_amount from customer as c
+inner join invoice as i on c.customer_id = i.customer_id	
+group by c.first_name, c.last_name
+order by total_amount desc;		
+----------------------------------------------------------------------------------
+
+-- 3. Find the total number of invoices per customer and sort the results by the total number of invoices in descending order.
+select c.first_name, c.last_name, sum(i.total) as total_amount from customer as c
+inner join invoice as i on c.customer_id = i.customer_id
+where c.country = 'USA'	
+group by c.first_name, c.last_name
+order by total_amount desc;	
+----------------------------------------------------------------------------------		
+-- 4. Find the total number of invoices per customer and sort the results by the total number of invoices in descending order.
+select c.first_name, c.last_name, sum(i.total) as total_amount from customer as c
+inner join invoice as i on c.customer_id = i.customer_id
+where c.country = 'USA' and c.state = 'CA'
+group by c.first_name, c.last_name
+order by total_amount desc;
 ----------------------------------------------------------------------------------
