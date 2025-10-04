@@ -25,3 +25,17 @@ print(df)
 print(df.head)   #give first five value from dataframe
 print(df.tail)   #give last five value from dataframe
 
+print('--'*20)
+
+
+
+#reading data from csv file 
+
+
+df1 = pd.read_csv('./moviedata/day20data.csv')
+
+print(df1)
+
+print('--'*20)
+
+
