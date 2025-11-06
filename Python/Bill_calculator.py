@@ -11,6 +11,7 @@ while True:
         
         # Check if user wants to quit
         if amount.lower() == 'q':
+            print("Calculating total...")
             break
             
         # Convert input to float and add to total
