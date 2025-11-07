@@ -8,6 +8,7 @@ while True:
     try:
         # Ask for amount, 'q' to quit
         amount = input(f"Enter amount {count} (or 'q' to finish): ")
+
         
         # Check if user wants to quit
         if amount.lower() == 'q':
@@ -24,3 +25,4 @@ while True:
 
 print("-" * 20)
 print(f"Total bill amount: ₹{total:.2f}")
+print("Thank you for using the Bill Calculator!")
