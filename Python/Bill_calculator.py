@@ -24,5 +24,5 @@ while True:
         print("Please enter a valid number or 'q' to finish")
 
 print("-" * 20)
-print(f"Total bill amount: ₹{total:.2f}")
+print(f"Total bill amount is: ₹{total:.2f}")
 print("Thank you for using the Bill Calculator!")
