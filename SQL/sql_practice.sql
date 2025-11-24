@@ -331,4 +331,3 @@ inner join invoice as i on c.customer_id = i.customer_id
 where c.country = 'USA' and c.state = 'CA'
 group by c.first_name, c.last_name
 order by total_amount desc;
-----------------------------------------------------------------------------------
