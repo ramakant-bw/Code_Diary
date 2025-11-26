@@ -1,1 +1,3 @@
 pip install sentence-transformers torch
+
+pip install pandas as pd
