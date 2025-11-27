@@ -385,3 +385,40 @@ FROM
 
 
 ------------------------------------------------------------------------------------------------------------------------------------
+
+-- SQL Window Functions Example
+-- Step 1: Create the 'sales' table
+CREATE TABLE sales (
+    id SERIAL PRIMARY KEY,
+    salesperson VARCHAR(100) NOT NULL,
+    region VARCHAR(100) NOT NULL,
+    amount NUMERIC NOT NULL,
+    sale_date DATE NOT NULL
+);
+-- Step 2: Insert sample data into 'sales'
+INSERT INTO sales (salesperson, region, amount, sale_date) VALUES
+('Alice', 'North', 5000, '2023-01-10'),
+('Bob', 'South', 7000, '2023-01-15'),
+('Alice', 'North', 6000, '2023-02-10'),
+('Bob', 'South', 8000, '2023-02-15'),
+('Charlie', 'East', 4000, '2023-01-20'),
+('Charlie', 'East', 4500, '2023-02-20'),
+('Alice', 'North', 7000, '2023-03-10'),
+('Bob', 'South', 9000, '2023-03-15'),
+('Charlie', 'East', 5000, '2023-03-20');
+-- Step 3: Use window functions to analyze sales data
+SELECT
+    salesperson,
+    region,
+    amount,
+    sale_date,
+    SUM(amount) OVER (PARTITION BY salesperson ORDER BY sale_date) AS running_total,
+    AVG(amount) OVER (PARTITION BY region) AS avg_region_sales,
+    RANK() OVER (PARTITION BY region ORDER BY amount DESC) AS sales_rank
+FROM
+    sales;
+-- Explanation:
+-- SUM() OVER (PARTITION BY ... ORDER BY ...): Calculates a running total of sales for each salesperson ordered by sale date.
+-- AVG() OVER (PARTITION BY ...): Computes the average sales amount for each region.    
+-- RANK() OVER (PARTITION BY ... ORDER BY ...): Assigns a rank to each sale within its region based on the amount, with the highest amount getting rank 1.
+------------------------------------------------------------------------------------------------------------------------------------
